@@ -38,8 +38,10 @@ namespace FrmGoldTekLabel
             this.enhancementTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incidentConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabForms = new System.Windows.Forms.TabControl();
             this.enhancementConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabForms = new System.Windows.Forms.TabControl();
+            this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,9 @@ namespace FrmGoldTekLabel
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.productionToolStripMenuItem,
-            this.consoleToolStripMenuItem});
+            this.consoleToolStripMenuItem,
+            this.setupToolStripMenuItem,
+            this.userManagerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
@@ -113,6 +117,13 @@ namespace FrmGoldTekLabel
             this.incidentConsoleToolStripMenuItem.Text = "Incident Console";
             this.incidentConsoleToolStripMenuItem.Click += new System.EventHandler(this.incidentConsoleToolStripMenuItem_Click);
             // 
+            // enhancementConsoleToolStripMenuItem
+            // 
+            this.enhancementConsoleToolStripMenuItem.Name = "enhancementConsoleToolStripMenuItem";
+            this.enhancementConsoleToolStripMenuItem.Size = new System.Drawing.Size(289, 34);
+            this.enhancementConsoleToolStripMenuItem.Text = "Enhancement Console";
+            this.enhancementConsoleToolStripMenuItem.Click += new System.EventHandler(this.enhancementConsoleToolStripMenuItem_Click);
+            // 
             // tabForms
             // 
             this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
@@ -125,12 +136,17 @@ namespace FrmGoldTekLabel
             this.tabForms.Visible = false;
             this.tabForms.SelectedIndexChanged += new System.EventHandler(this.tabForms_SelectedIndexChanged_1);
             // 
-            // enhancementConsoleToolStripMenuItem
+            // setupToolStripMenuItem
             // 
-            this.enhancementConsoleToolStripMenuItem.Name = "enhancementConsoleToolStripMenuItem";
-            this.enhancementConsoleToolStripMenuItem.Size = new System.Drawing.Size(289, 34);
-            this.enhancementConsoleToolStripMenuItem.Text = "Enhancement Console";
-            this.enhancementConsoleToolStripMenuItem.Click += new System.EventHandler(this.enhancementConsoleToolStripMenuItem_Click);
+            this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
+            this.setupToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
+            this.setupToolStripMenuItem.Text = "Setup";
+            // 
+            // userManagerToolStripMenuItem
+            // 
+            this.userManagerToolStripMenuItem.Name = "userManagerToolStripMenuItem";
+            this.userManagerToolStripMenuItem.Size = new System.Drawing.Size(138, 29);
+            this.userManagerToolStripMenuItem.Text = "User Manager";
             // 
             // FrmMain
             // 
@@ -166,5 +182,7 @@ namespace FrmGoldTekLabel
         private System.Windows.Forms.ToolStripMenuItem consoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incidentConsoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enhancementConsoleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userManagerToolStripMenuItem;
     }
 }
