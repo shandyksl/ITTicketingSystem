@@ -141,12 +141,14 @@ namespace FrmGoldTekLabel
             this.setupToolStripMenuItem.Name = "setupToolStripMenuItem";
             this.setupToolStripMenuItem.Size = new System.Drawing.Size(74, 29);
             this.setupToolStripMenuItem.Text = "Setup";
+            this.setupToolStripMenuItem.Click += new System.EventHandler(this.setupToolStripMenuItem_Click);
             // 
             // userManagerToolStripMenuItem
             // 
             this.userManagerToolStripMenuItem.Name = "userManagerToolStripMenuItem";
             this.userManagerToolStripMenuItem.Size = new System.Drawing.Size(138, 29);
             this.userManagerToolStripMenuItem.Text = "User Manager";
+            this.userManagerToolStripMenuItem.Click += new System.EventHandler(this.userManagerToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

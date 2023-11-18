@@ -86,6 +86,31 @@ namespace FrmCOFLabel.API
 
         }
 
+        public int GetUserRecordName(string cc, string un)
+        {
+            DataTable tblUser = new DataTable();
+            int result  = 0;
+            CModule.cnn.Open();
+            string query = "select * from tblUser WHERE cc = '" + cc + "' and un = '" + un + "'";
+            SqlCommand cmd = new SqlCommand(query, CModule.cnn);
+            // create data adapter
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            // this will query your database and return the result to your datatable
+            da.Fill(tblUser);
+            CModule.cnn.Close();
+            if (tblUser.Rows.Count > 0)
+            {
+                result = 1; 
+            }
+            else
+            {
+                result = 0; 
+            }
+
+            return result;
+
+        }
+
         public DataTable GettblIncidentTicketRecordAssign(string cc)
         {
             DataTable tblIncidentTicket = new DataTable();
@@ -212,6 +237,32 @@ namespace FrmCOFLabel.API
             da.Fill(tblEnhancementTicket);
             CModule.cnn.Close();
             return tblEnhancementTicket;
+        }
+
+        public string insertTblUser(string cc, string un, string pw, string dept, string role, string mobile,  string createdDate, string updatedDate, string createdBy, string updatedBy)
+        {
+            CModule.cnn.Open();
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sql = "";
+            sql = "Insert into tblUser (cc, un,  priority,  title,   createdDate,updatedDate ) values ('" + cc + "', '" + un + "', '" + priority + "', '" + title + "', '" + status + "', '" + description + "', '" + type + "', '" + location + "', '" + assignGroup + "', '" + shift + "', '" + chat + "', '" + createdBy + "', '" + updatedBy + "', '" + createdDate + "', '" + updatedDate + "')";
+            command = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            CModule.cnn.Close();
+            CModule.cnn.Open();
+            string id2 = "";
+            using (SqlCommand command2 = new SqlCommand("Select id from tblUser where un = '" + un + "' AND cc = '" + cc + "'", CModule.cnn))
+            {
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    reader.Read();
+                    id2 = reader["id"].ToString();
+                }
+            }
+            CModule.cnn.Close();
+            return id2;
         }
 
 

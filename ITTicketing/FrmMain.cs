@@ -43,6 +43,9 @@ namespace FrmGoldTekLabel
                 {
                     case "USER":
                         productionToolStripMenuItem.Enabled = true;
+                        userManagerToolStripMenuItem.Enabled = false;
+                        setupToolStripMenuItem.Enabled = false;
+
                         break;
 
                     default:
@@ -63,6 +66,18 @@ namespace FrmGoldTekLabel
             FrmEnhancementConsole f2 = new FrmEnhancementConsole();
             f2.MdiParent = this;
             f2.Show();
+        }
+
+        private void userManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUserManager f2 = new FrmUserManager();
+            f2.MdiParent = this;
+            f2.Show(); 
+        }
+
+        private void setupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void dVTLabelToolStripMenuItem_Click(object sender, EventArgs e)

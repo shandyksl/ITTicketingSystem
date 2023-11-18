@@ -80,7 +80,7 @@
             this.ASSIGN.TabIndex = 0;
             this.ASSIGN.Text = "Assign To Me";
             this.ASSIGN.UseVisualStyleBackColor = true;
-            this.ASSIGN.Click += new System.EventHandler(this.ASSIGN_Click);
+       
             // 
             // gv
             // 

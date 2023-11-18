@@ -472,7 +472,7 @@
             this.txtClosedBy.ReadOnly = true;
             this.txtClosedBy.Size = new System.Drawing.Size(280, 26);
             this.txtClosedBy.TabIndex = 155;
-            this.txtClosedBy.TextChanged += new System.EventHandler(this.txtClosedBy_TextChanged);
+     
             // 
             // btnUpdateSolve
             // 
