@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtun = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +140,7 @@
             this.txtmobile.Name = "txtmobile";
             this.txtmobile.Size = new System.Drawing.Size(163, 26);
             this.txtmobile.TabIndex = 172;
+            this.txtmobile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtmobile_KeyPress);
             // 
             // label5
             // 
@@ -181,6 +183,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(546, 219);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
@@ -188,13 +191,14 @@
             this.btnDelete.TabIndex = 179;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // gv
             // 
             this.gv.AllowUserToAddRows = false;
             this.gv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Lavender;
-            this.gv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.gv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -206,18 +210,20 @@
             this.dept,
             this.role,
             this.productID,
-            this.createdDate});
+            this.createdDate,
+            this.createdBy});
             this.gv.Location = new System.Drawing.Point(30, 281);
             this.gv.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.RowHeadersWidth = 5;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.gv.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.gv.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(1171, 289);
             this.gv.TabIndex = 180;
+            this.gv.DoubleClick += new System.EventHandler(this.gv_DoubleClick);
             // 
             // colid
             // 
@@ -283,6 +289,14 @@
             this.createdDate.ReadOnly = true;
             this.createdDate.Width = 125;
             // 
+            // createdBy
+            // 
+            this.createdBy.HeaderText = "created by";
+            this.createdBy.MinimumWidth = 8;
+            this.createdBy.Name = "createdBy";
+            this.createdBy.ReadOnly = true;
+            this.createdBy.Width = 150;
+            // 
             // FrmUserManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -340,5 +354,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn role;
         private System.Windows.Forms.DataGridViewTextBoxColumn productID;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdBy;
     }
 }

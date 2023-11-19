@@ -239,13 +239,13 @@ namespace FrmCOFLabel.API
             return tblEnhancementTicket;
         }
 
-        public string insertTblUser(string cc, string un, string pw, string dept, string role, string mobile,  string createdDate, string updatedDate, string createdBy, string updatedBy)
+        public string insertTblUser(string cc, string un, string pw, string dept, string role, string mobile, string createdDate,  string createdBy)
         {
             CModule.cnn.Open();
             SqlCommand command;
             SqlDataAdapter adapter = new SqlDataAdapter();
             string sql = "";
-            sql = "Insert into tblUser (cc, un,  priority,  title,   createdDate,updatedDate ) values ('" + cc + "', '" + un + "', '" + priority + "', '" + title + "', '" + status + "', '" + description + "', '" + type + "', '" + location + "', '" + assignGroup + "', '" + shift + "', '" + chat + "', '" + createdBy + "', '" + updatedBy + "', '" + createdDate + "', '" + updatedDate + "')";
+            sql = "Insert into tblUser (cc, un, pw, dept, role, mobile, createdDate, updatedDate, createdBy, updatedBy) values ('" + cc + "', '" + un + "', '" + pw + "', '" + dept + "', '" + role + "', '" + mobile + "', '" + createdDate + "', '" + createdDate + "', '" + createdBy + "', '" + createdBy + "')";
             command = new SqlCommand(sql, CModule.cnn);
             adapter.InsertCommand = new SqlCommand(sql, CModule.cnn);
             adapter.InsertCommand.ExecuteNonQuery();
@@ -263,6 +263,103 @@ namespace FrmCOFLabel.API
             }
             CModule.cnn.Close();
             return id2;
+        }
+
+        //public void updateTblUser(string id, string cc, string un, string pw, string dept, string role, string mobile, string updatedDate, string updatedBy)
+        //{
+        //    CModule.cnn.Open();
+        //    SqlCommand command;
+        //    SqlDataAdapter adapter = new SqlDataAdapter();
+        //    string sql = "";
+        //    sql = "UPDATE tblUser SET cc = '" + cc + "', un = '" + un + "', pw = '" + pw + "', dept = '" + dept + "', role = '" + role + "', mobile = '" + mobile + "', updatedDate = '" + updatedDate + "', updatedBy = '" + updatedBy + "' WHERE id = " + id;
+        //    command = new SqlCommand(sql, CModule.cnn);
+        //    adapter.UpdateCommand = new SqlCommand(sql, CModule.cnn);
+        //    adapter.UpdateCommand.ExecuteNonQuery();
+        //    command.Dispose();
+        //    CModule.cnn.Close();
+        //}
+
+        public bool updateTblUser(string cc, string un, string pw, string dept, string role, string mobile, string updatedDate, string updatedBy)
+        {
+            bool updateSuccessful = false;
+
+            try
+            {
+                CModule.cnn.Open();
+                SqlCommand command;
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                string sql = "UPDATE tblUser SET cc = @cc, un = @un, pw = @pw, dept = @dept, role = @role, mobile = @mobile, updatedDate = @updatedDate, updatedBy = @updatedBy WHERE un = @un AND cc = @cc";
+
+                command = new SqlCommand(sql, CModule.cnn);
+                command.Parameters.AddWithValue("@cc", cc);
+                command.Parameters.AddWithValue("@un", un);
+                command.Parameters.AddWithValue("@pw", pw);
+                command.Parameters.AddWithValue("@dept", dept);
+                command.Parameters.AddWithValue("@role", role);
+                command.Parameters.AddWithValue("@mobile", mobile);
+                command.Parameters.AddWithValue("@updatedDate", updatedDate);
+                command.Parameters.AddWithValue("@updatedBy", updatedBy);
+             
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    updateSuccessful = true;
+                }
+
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it or throw a custom exception)
+                // You may also want to return false in case of an exception
+                updateSuccessful = false;
+            }
+            finally
+            {
+                CModule.cnn.Close();
+            }
+
+            return updateSuccessful;
+        }
+
+
+        public bool deleteTblUser(string un, string cc)
+        {
+            bool deleteSuccessful = false;
+
+            try
+            {
+                CModule.cnn.Open();
+                SqlCommand command;
+                string sql = "DELETE FROM tblUser WHERE un = @un AND cc = @cc";
+
+                command = new SqlCommand(sql, CModule.cnn);
+                command.Parameters.AddWithValue("@un", un);
+                command.Parameters.AddWithValue("@cc", cc);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    deleteSuccessful = true;
+                }
+
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it or throw a custom exception)
+                // You may also want to return false in case of an exception
+                deleteSuccessful = false;
+            }
+            finally
+            {
+                CModule.cnn.Close();
+            }
+
+            return deleteSuccessful;
         }
 
 
