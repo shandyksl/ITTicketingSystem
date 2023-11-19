@@ -13,6 +13,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ITTicketing
 {
@@ -20,6 +21,8 @@ namespace ITTicketing
     {
         CHW_HK cl_hk = new CHW_HK();
         DataTable tblInc = new DataTable();
+        DataTable tblLocation = new DataTable();
+        DataTable tblShift = new DataTable();
 
         public string priority { get; set; }
 
@@ -62,6 +65,16 @@ namespace ITTicketing
             cmbShift.SelectedIndex = -1; txtTypeChat.Text = ""; dtCreated.Value = DateTime.Now;txtTitle.Text = "";  txtChatHistory.Text = "";
             txtSolution.Text = ""; dtSolve.Value = DateTime.Now;txtSolveBy.Text = ""; txtComment.Text = ""; dtClose.Value = DateTime.Now;txtClosedBy.Text = "";
             btnEnter.Enabled = true; txtTypeChat.Enabled = true; btnSubmit.Enabled = true;
+            tblLocation = cl_hk.GetLocationRecord(CModule.cc); 
+            cmbLocation.DataSource = tblLocation;
+            cmbLocation.DisplayMember = "location";
+            cmbLocation.ValueMember = "location";
+
+            tblShift = cl_hk.GetShiftRecord(CModule.cc);
+            cmbShift.DataSource = tblShift;
+            cmbShift.DisplayMember = "shift";
+            cmbShift.ValueMember = "shift";
+
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -153,7 +166,6 @@ namespace ITTicketing
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-         
         }
 
         private void DataPopulate(DataTable tblInc)

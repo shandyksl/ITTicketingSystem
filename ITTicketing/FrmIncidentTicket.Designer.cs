@@ -212,17 +212,6 @@
             // 
             this.cmbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocation.FormattingEnabled = true;
-            this.cmbLocation.Items.AddRange(new object[] {
-            "Plant 1 Production Module 1",
-            "Plant 1 Production Module 2",
-            "Plant 2 Production Module 1",
-            "Plant 2 Production Module 2",
-            "Finish Good Area",
-            "Shipping Office",
-            "Supply Chain And Management Office",
-            "HR Office",
-            "Engineering Office",
-            "BU Office"});
             this.cmbLocation.Location = new System.Drawing.Point(171, 417);
             this.cmbLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbLocation.Name = "cmbLocation";
@@ -243,10 +232,6 @@
             // 
             this.cmbShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbShift.FormattingEnabled = true;
-            this.cmbShift.Items.AddRange(new object[] {
-            "Normal",
-            "Morning",
-            "Night"});
             this.cmbShift.Location = new System.Drawing.Point(728, 417);
             this.cmbShift.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbShift.Name = "cmbShift";
@@ -472,7 +457,6 @@
             this.txtClosedBy.ReadOnly = true;
             this.txtClosedBy.Size = new System.Drawing.Size(280, 26);
             this.txtClosedBy.TabIndex = 155;
-     
             // 
             // btnUpdateSolve
             // 

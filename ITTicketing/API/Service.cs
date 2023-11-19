@@ -14,18 +14,7 @@ namespace FrmCOFLabel.API
 {
     public class CHW_HK
     {
-        //public DataTable CheckResetExist(string cc, string year, string month)
-        //{
-        //    DataTable tblresetExist = new DataTable();
-        //    string yearMonth = year + month;
-        //    CModule.cnn.Open();
-        //    string query = "SELECT * from tblPanel WHERE cc = '" + cc + "' AND yearMonth = '" + yearMonth + "' AND runningCode = 0 ";
-        //    SqlCommand cmd = new SqlCommand(query, CModule.cnn);
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    da.Fill(tblresetExist);
-        //    CModule.cnn.Close();
-        //    return tblresetExist;
-        //}
+
 
         public DataTable GetUserRecord(string cc)
         {
@@ -60,6 +49,78 @@ namespace FrmCOFLabel.API
                 }
             }
             return tblUser;
+        }
+
+
+
+        public DataTable GetLocationRecord(string cc)
+        {
+            DataTable tblLocation = new DataTable();
+
+            try
+            {
+                if (CModule.cnn.State != ConnectionState.Open)
+                {
+                    CModule.cnn.Open();
+                }
+
+                string query = "select * from tblLocation WHERE cc = '" + cc + "'";
+                SqlCommand cmd = new SqlCommand(query, CModule.cnn);
+                // create data adapter
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                // this will query your database and return the result to your datatable
+                da.Fill(tblLocation);
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception here, for example, display an error message
+                Console.WriteLine("Error while connecting to SQL: " + ex.Message);
+                // You can also throw the exception if needed
+                // throw ex;
+            }
+            finally
+            {
+                if (CModule.cnn.State == ConnectionState.Open)
+                {
+                    CModule.cnn.Close();
+                }
+            }
+            return tblLocation;
+        }
+
+        public DataTable GetShiftRecord(string cc)
+        {
+            DataTable tblShift = new DataTable();
+
+            try
+            {
+                if (CModule.cnn.State != ConnectionState.Open)
+                {
+                    CModule.cnn.Open();
+                }
+
+                string query = "select * from tblShift WHERE cc = '" + cc + "'";
+                SqlCommand cmd = new SqlCommand(query, CModule.cnn);
+                // create data adapter
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                // this will query your database and return the result to your datatable
+                da.Fill(tblShift);
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception here, for example, display an error message
+                Console.WriteLine("Error while connecting to SQL: " + ex.Message);
+                // You can also throw the exception if needed
+                // throw ex;
+            }
+            finally
+            {
+                if (CModule.cnn.State == ConnectionState.Open)
+                {
+                    CModule.cnn.Close();
+                }
+            }
+            return tblShift;
         }
 
         public String GetUserRecord(string cc, string un)
@@ -105,6 +166,56 @@ namespace FrmCOFLabel.API
             else
             {
                 result = 0; 
+            }
+
+            return result;
+
+        }
+
+        public int GetLocationRecordName(string cc, string location)
+        {
+            DataTable tblLocation = new DataTable();
+            int result = 0;
+            CModule.cnn.Open();
+            string query = "select * from tblLocation WHERE cc = '" + cc + "' and location = '" + location + "'";
+            SqlCommand cmd = new SqlCommand(query, CModule.cnn);
+            // create data adapter
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            // this will query your database and return the result to your datatable
+            da.Fill(tblLocation);
+            CModule.cnn.Close();
+            if (tblLocation.Rows.Count > 0)
+            {
+                result = 1;
+            }
+            else
+            {
+                result = 0;
+            }
+
+            return result;
+
+        }
+
+        public int GetShiftRecordName(string cc, string shift)
+        {
+            DataTable tblshift = new DataTable();
+            int result = 0;
+            CModule.cnn.Open();
+            string query = "select * from tblShift WHERE cc = '" + cc + "' and shift = '" + shift + "'";
+            SqlCommand cmd = new SqlCommand(query, CModule.cnn);
+            // create data adapter
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            // this will query your database and return the result to your datatable
+            da.Fill(tblshift);
+            CModule.cnn.Close();
+            if (tblshift.Rows.Count > 0)
+            {
+                result = 1;
+            }
+            else
+            {
+                result = 0;
             }
 
             return result;
@@ -265,19 +376,60 @@ namespace FrmCOFLabel.API
             return id2;
         }
 
-        //public void updateTblUser(string id, string cc, string un, string pw, string dept, string role, string mobile, string updatedDate, string updatedBy)
-        //{
-        //    CModule.cnn.Open();
-        //    SqlCommand command;
-        //    SqlDataAdapter adapter = new SqlDataAdapter();
-        //    string sql = "";
-        //    sql = "UPDATE tblUser SET cc = '" + cc + "', un = '" + un + "', pw = '" + pw + "', dept = '" + dept + "', role = '" + role + "', mobile = '" + mobile + "', updatedDate = '" + updatedDate + "', updatedBy = '" + updatedBy + "' WHERE id = " + id;
-        //    command = new SqlCommand(sql, CModule.cnn);
-        //    adapter.UpdateCommand = new SqlCommand(sql, CModule.cnn);
-        //    adapter.UpdateCommand.ExecuteNonQuery();
-        //    command.Dispose();
-        //    CModule.cnn.Close();
-        //}
+
+        public string insertTblLocation(string cc, string location, string createdDate, string createdBy)
+        {
+            CModule.cnn.Open();
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sql = "";
+            sql = "Insert into tblLocation (cc, location, createdDate, createdBy) values ('" + cc + "', '" + location + "',  '" + createdDate + "',  '" + createdBy + "')";
+            command = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            CModule.cnn.Close();
+            CModule.cnn.Open();
+            string id2 = "";
+            using (SqlCommand command2 = new SqlCommand("Select id from tblLocation where location = '" + location + "' AND cc = '" + cc + "'", CModule.cnn))
+            {
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    reader.Read();
+                    id2 = reader["id"].ToString();
+                }
+            }
+            CModule.cnn.Close();
+            return id2;
+        }
+
+
+        public string insertTblShift(string cc, string shift, string createdDate, string createdBy)
+        {
+            CModule.cnn.Open();
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sql = "";
+            sql = "Insert into tblShift (cc, shift, createdDate, createdBy) values ('" + cc + "', '" + shift + "',  '" + createdDate + "',  '" + createdBy + "')";
+            command = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand = new SqlCommand(sql, CModule.cnn);
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            CModule.cnn.Close();
+            CModule.cnn.Open();
+            string id2 = "";
+            using (SqlCommand command2 = new SqlCommand("Select id from tblShift where shift = '" + shift + "' AND cc = '" + cc + "'", CModule.cnn))
+            {
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    reader.Read();
+                    id2 = reader["id"].ToString();
+                }
+            }
+            CModule.cnn.Close();
+            return id2;
+        }
+
 
         public bool updateTblUser(string cc, string un, string pw, string dept, string role, string mobile, string updatedDate, string updatedBy)
         {
@@ -361,6 +513,83 @@ namespace FrmCOFLabel.API
 
             return deleteSuccessful;
         }
+
+        public bool deleteTblLocation(string location, string cc)
+        {
+            bool deleteSuccessful = false;
+
+            try
+            {
+                CModule.cnn.Open();
+                SqlCommand command;
+                string sql = "DELETE FROM tblLocation WHERE location = @location AND cc = @cc";
+
+                command = new SqlCommand(sql, CModule.cnn);
+                command.Parameters.AddWithValue("@location", location);
+                command.Parameters.AddWithValue("@cc", cc);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    deleteSuccessful = true;
+                }
+
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it or throw a custom exception)
+                // You may also want to return false in case of an exception
+                deleteSuccessful = false;
+            }
+            finally
+            {
+                CModule.cnn.Close();
+            }
+
+            return deleteSuccessful;
+        }
+
+
+
+        public bool deleteTblShift(string shift, string cc)
+        {
+            bool deleteSuccessful = false;
+
+            try
+            {
+                CModule.cnn.Open();
+                SqlCommand command;
+                string sql = "DELETE FROM tblShift WHERE shift = @shift AND cc = @cc";
+
+                command = new SqlCommand(sql, CModule.cnn);
+                command.Parameters.AddWithValue("@shift", shift);
+                command.Parameters.AddWithValue("@cc", cc);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    deleteSuccessful = true;
+                }
+
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it or throw a custom exception)
+                // You may also want to return false in case of an exception
+                deleteSuccessful = false;
+            }
+            finally
+            {
+                CModule.cnn.Close();
+            }
+
+            return deleteSuccessful;
+        }
+
 
 
 

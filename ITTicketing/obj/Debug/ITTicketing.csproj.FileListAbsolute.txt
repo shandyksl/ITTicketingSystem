@@ -58,3 +58,5 @@ C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.csproj.CoreCompileInputs.cache
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.exe
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.pdb
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.FrmLocation.resources
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.FrmShift.resources

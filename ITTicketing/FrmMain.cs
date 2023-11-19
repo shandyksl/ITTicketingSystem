@@ -45,7 +45,6 @@ namespace FrmGoldTekLabel
                         productionToolStripMenuItem.Enabled = true;
                         userManagerToolStripMenuItem.Enabled = false;
                         setupToolStripMenuItem.Enabled = false;
-
                         break;
 
                     default:
@@ -75,9 +74,20 @@ namespace FrmGoldTekLabel
             f2.Show(); 
         }
 
-        private void setupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+  
 
+        private void locationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmLocation f2 = new FrmLocation();
+            f2.MdiParent = this;
+            f2.Show();
+        }
+
+        private void shiftToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmShift f2 = new FrmShift();
+            f2.MdiParent = this;
+            f2.Show();
         }
 
         private void dVTLabelToolStripMenuItem_Click(object sender, EventArgs e)

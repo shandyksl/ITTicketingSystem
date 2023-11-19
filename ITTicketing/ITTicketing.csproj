@@ -72,11 +72,23 @@
     <Compile Include="FrmIncidentTicket.Designer.cs">
       <DependentUpon>FrmIncidentTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLocation.Designer.cs">
+      <DependentUpon>FrmLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShift.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShift.Designer.cs">
+      <DependentUpon>FrmShift.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSignIn.cs">
       <SubType>Form</SubType>
@@ -104,8 +116,14 @@
     <EmbeddedResource Include="FrmIncidentTicket.resx">
       <DependentUpon>FrmIncidentTicket.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmLocation.resx">
+      <DependentUpon>FrmLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShift.resx">
+      <DependentUpon>FrmShift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSignIn.resx">
       <DependentUpon>FrmSignIn.cs</DependentUpon>
