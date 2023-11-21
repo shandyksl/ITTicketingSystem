@@ -60,3 +60,7 @@ C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.pdb
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.FrmLocation.resources
 C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.FrmShift.resources
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\bin\Debug\ITTicketing.exe.manifest
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\bin\Debug\ITTicketing.application
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.exe.manifest
+C:\Users\Henry\Documents\ITTicketingDeveloping\ITTicketing\obj\Debug\ITTicketing.application

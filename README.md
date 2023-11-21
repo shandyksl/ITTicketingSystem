@@ -31,3 +31,12 @@ Click on the Server name and changed to LAPTOP-ULR5FPFS\SQLEXPRESS and Authentic
 ###### 3. Test running the project locally
 - Ensure that the SSMS local server is running.
 - Click Run in Visual Studio 2022 to run the project. If there are no prompt errors, it means the project is running successfully
+
+
+###### 4.0 Generate Exe File
+
+1. Right-click on 'IT Ticketing' in the Solution Explorer.
+2. Click on 'Publish.'
+3. Click 'Next,' then select 'From a CD-ROM or DVD-ROM.'
+4. Lastly, check 'The application will not check for updates' and click 'Finish.'
+5. The .exe file will be automatically generated in 'ITTicketing\publish.'"
