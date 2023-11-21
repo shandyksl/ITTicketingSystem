@@ -25,8 +25,8 @@ This project uses Windows Forms App (.NET Framework). It is recommended to use V
 Click on the Server name and changed to LAPTOP-ULR5FPFS\SQLEXPRESS and Authentication changed to Windows Authentication
 
 2.3 In SSMS, create a database named ITTicketing 
-2.4 Copy the contents of [init.sql](./ITTicketing/Database/init.sql) and execute it in the created database.
 
+2.4 Copy the contents of [init.sql](./ITTicketing/Database/init.sql) and execute it in the created database.
 
 ###### 3. Test running the project locally
 - Ensure that the SSMS local server is running.
